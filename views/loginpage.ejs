@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login - Paige Hair Co.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/square.ico">
+    <link rel="preload" href="https://cdn3.editmysite.com/app/website/css/site.4b84f4c981da85f11ad4.css" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #D4A5A5;
+            --secondary-color: #F0E1E1;
+            --text-color: #5C3D3D;
+            --highlight-color: #F7C7C7;
+        }
+        * {
+            font-family: 'Work Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: var(--secondary-color);
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-weight: bold;
+        }
+
+        .header a {
+            margin: 0 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .header a:hover {
+            color: var(--highlight-color);
+            text-decoration: underline;
+        }
+        .login-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-form {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-form h2 {
+            color: var(--text-color);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            color: var(--text-color);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            color: var(--text-color);
+            background-color: #F9F9F9;
+        }
+        .form-group input[type="text"]:focus,
+        .form-group input[type="password"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .login-button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            font-size: 1.5em;
+            /* Increased size */
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .account-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .login-button:hover,
+        .account-button:hover {
+            background-color: var(--highlight-color);
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1em;
+            display: none;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+            font-size: 0.9em;
+            margin-bottom: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Paige Hair Co.</h1>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/book">Book</a>
+        
+    </div>
+    <div class="login-container">
+        <form class="login-form" onsubmit="return validateLogin(event)">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <div class="error-message" id="error-message">Username or password is incorrect.</div>
+        </form>
+    </div>
+    <div class="footer">
+        &copy; 2024 Paige Hair Co. All rights reserved.
+    </div>
+    <script>
+        // Mock user data for demonstration
+        const users = [
+            { username: 'user1', password: 'password123' },
+            { username: 'user2', password: 'mypassword' }
+        ];
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const user = users.find(user => user.username === username && user.password === password);
+            if (!user) {
+                document.getElementById('error-message').style.display = 'block';
+                return false;
+            }
+            // Redirect to index.html on successful login
+            location.href = '/index.html';
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -8,7 +8,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="/square.ico">
     <link rel="preload" href="https://cdn3.editmysite.com/app/website/css/site.4b84f4c981da85f11ad4.css" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --primary-color: #d4a5a5;
@@ -81,9 +80,10 @@
 
         .header h1 {
             color: #ffffff;
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 10px;
             font-weight: 500;
+            font-weight: bold;
         }
 
         .header a {
@@ -92,11 +92,12 @@
             text-decoration: none;
             font-size: 1.1em;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s, text-decoration 0.3s;
         }
 
         .header a:hover {
             color: var(--highlight-color);
+            text-decoration: underline;
         }
 
         .about-section {
@@ -108,16 +109,16 @@
         }
 
         .about-section img {
-            width: 200px;
+            width: 320px;
             height: auto;
             border-radius: 10px;
             margin-right: 20px;
         }
 
         .intro-text {
-            font-size: 1.3em;
+            font-size: 1em;
             color: var(--text-color);
-            line-height: 1.5em;
+            line-height: 2em;
             max-width: 500px;
             text-align: center;
         }
@@ -131,28 +132,23 @@
         .instagram-section h2 {
             color: var(--text-color);
             margin: 10px 0;
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
 
         .instagram-section a.button {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #ffffff;
-            color: var(--primary-color);
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: #ffffff;
             border-radius: 20px;
             text-decoration: none;
+            font-size: 1.2em;
             font-weight: bold;
             transition: background-color 0.3s;
         }
 
         .instagram-section a.button:hover {
             background-color: var(--highlight-color);
-        }
-
-        .work-description {
-            color: var(--text-color);
-            font-size: 1.2em;
-            margin-top: 5px;
         }
 
         .location-hours-section {
@@ -187,37 +183,42 @@
             <div class="dot-container"></div>
         </div>
     </div>
-
     <div class="header">
         <h1>Paige Hair Co.</h1>
-        <a href="#">Book</a>
-        <a href="#">Services</a>
+        <a href="/services">Services</a>
+        <a href="/book">Book</a>
+        
     </div>
-
     <div class="about-section">
-        <img src="AboutMePic.jpg" alt="About Me Picture of Paige">
+        <img src="pictures/aboutme.JPG" alt="About Me Picture of Paige">
         <p class="intro-text">
-            hi i'm paige! i am a hairstylist at @rae & i am obsessed with my job! i have been doing hair for about 3
-            years now and i can't wait for what the future holds🫶🏼 i would love to do your hair!
+            Hi, I'm Paige! I'm a stylist at Rae Hair, and I am absolutely obsessed with what I do! Originally from
+            Provo, UT, I've been in the hair industry for over 3 years, and I specialize in creating beautiful, lived-in
+            colors, especially brunettes and blondes. Extensions are also one of my favorite things to work on!
+            <br>
+            <br>
+            When I'm not behind the chair, you can usually find me at BYU sporting events or hanging out with my family,
+            AND with my husband Jayk—we've been married for over two years and couldn't be happier. We're both working
+            hard toward our graduation in 2025!
+            <br>
+            <br>
+            I absolutely love connecting with my clients and making them feel beautiful. I can't wait to have you in my
+            chair soon! <br>
         </p>
     </div>
-
     <div class="instagram-section">
         <h2>Check out some of my work:</h2>
         <a href="https://www.instagram.com/paige.hairco/" class="button">Visit Instagram</a>
-        <p class="work-description">Blondes, brondes, brunettes, lived in hair 🫶🏼</p>
     </div>
-
     <div class="location-hours-section">
         <h3>Location & Hours</h3>
         <p><span>Rae Hair Salon</span></p>
         <p>4801 N. University Ave. #330 Suite 10<br>Provo, UT, 84604</p>
-        <p><span>Hours:</span><br>
+        <p><span> Hours:</span><br>
             Monday, Wednesday, Saturday: 10:00 am - 6:00 pm<br>
             Closed: Tuesday, Thursday, Friday, and Sunday
         </p>
     </div>
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const loadingView = document.querySelector('.loading-view');

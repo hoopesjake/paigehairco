@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book an Appointment - Paige Hair Co.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #D4A5A5;
+            --secondary-color: #F0E1E1;
+            --text-color: #5C3D3D;
+            --highlight-color: #F7C7C7;
+        }
+        * {
+            font-family: 'Work Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        .header {
+            text-align: center;
+            background-color: var(--primary-color);
+            padding: 20px;
+        }
+        .header h1 {
+            color: #FFFFFF;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-weight: bold;
+        }
+        .header a {
+            margin: 0 10px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+        .header a:hover {
+            color: var(--highlight-color);
+            text-decoration: underline;
+        }
+        .booking-form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            
+            flex-direction: column;
+            /* Stack items vertically */
+            gap: 15px;
+            /* Spacing between form elements */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"] {
+            width: 50%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .services {
+            margin: 20px 0;
+        }
+        .services table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .services th,
+        .services td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .services th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .services td input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .calendar-container {
+            margin: 20px 0;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .calendar-header button {
+            background-color: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calendar-header button:hover {
+            background-color: var(--highlight-color);
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-day {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .calendar button {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calendar button:hover {
+            background-color: var(--highlight-color);
+            color: white;
+        }
+        .calendar .selected {
+            background-color: var(--highlight-color);
+            color: white;
+        }
+        .time-slot {
+            margin: 20px 0;
+        }
+        .btn-book {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-book:hover {
+            background-color: var(--highlight-color);
+        }
+        .confirmation {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            text-transform: lowercase;
+        }
+        .confirmation span {
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-size: 0.9em;
+            margin-top: auto;
+        }
+        .navigation-buttons {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .navigation-buttons .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .navigation-buttons .btn:hover {
+            background-color: var(--highlight-color);
+        }
+        .main-content {
+    display: flex; /* Make the content a flex container */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-grow: 1; /* Make the content area take up the available space */
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Paige Hair Co.</h1>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+    </div>
+    <br>
+    <div class="main-content">
+        <div class="booking-form">
+            <div class="form-group">
+                <h2>Book an Appointment</h2>
+                <br>
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email">
+            </div>
+            <div class="services">
+                <h3>Select Services</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Price Starting At</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" value="Partial Highlight"> Partial Highlight</td>
+                            <td>$140</td>
+                            <td>2.5 hrs</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="Full Highlight"> Full Highlight</td>
+                            <td>$175</td>
+                            <td>3 hrs</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="Balayage"> Balayage</td>
+                            <td>$175</td>
+                            <td>3 hrs</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="Extensions"> Extensions</td>
+                            <td>$100 per row</td>
+                            <td>1 hr/row</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="Haircut"> Haircut</td>
+                            <td>$55</td>
+                            <td>1 hr</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="Root Retouch"> Root Retouch</td>
+                            <td>$90</td>
+                            <td>2 hrs</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="Glaze"> Glaze</td>
+                            <td>$75</td>
+                            <td>1.5 hrs</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" value="Hairline Foil"> Hairline Foil</td>
+                            <td>$110</td>
+                            <td>1.5 hrs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button onclick="prevMonth()">&#9664; Prev</button>
+                    <h3 id="calendar-month">November 2024</h3>
+                    <button onclick="nextMonth()">Next &#9654;</button>
+                </div>
+                <div class="calendar">
+                    <div class="calendar-day">Sun</div>
+                    <div class="calendar-day">Mon</div>
+                    <div class="calendar-day">Tue</div>
+                    <div class="calendar-day">Wed</div>
+                    <div class="calendar-day">Thu</div>
+                    <div class="calendar-day">Fri</div>
+                    <div class="calendar-day">Sat</div>
+                </div>
+            </div>
+            <div id="selected-date" style="font-weight: bold;"></div>
+            <div class="time-slot">
+                
+                <label for="time">Select Time</label>
+                <select id="time">
+        
+                    <option>10:00 AM</option>
+                    <option>11:00 AM</option>
+                    <option>12:00 PM</option>
+                    <option>1:00 PM</option>
+                    <option>2:00 PM</option>
+                    <option>3:00 PM</option>
+                    <option>4:00 PM</option>
+                    <option>5:00 PM</option>
+                    <option>6:00 PM</option>
+                </select>
+            </div>
+            <button class="btn-book" onclick="bookAppointment()">Book Appointment</button>
+        </div>
+        <div class="confirmation" id="confirmation"></div>
+    </div>
+    <br>
+    <div class="confirmation" id="confirmation"></div>
+        <div class="navigation-buttons">
+            <button class="btn"
+                onclick="window.location.href='https://www.google.com/maps/dir//4801+N+University+Ave+330+10,+Provo,+UT+84604/@40.2751488,-111.6995584,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x874d900c0c27c203:0x8e1270e5cc4b6ca1!2m2!1d-111.6595999!2d40.2980322!3e0?entry=ttu&g_ep=EgoyMDI0MTExMy4xIKXMDSoASAFQAw%3D%3D'">Directions</button>
+            <button class="btn" onclick="window.location.href='/loginpage'">Admin Login</button>
+        </div>
+
+
+    <br>
+    <div class="footer">
+        &copy; 2024 Paige Hair Co. All rights reserved.
+    </div>
+    
+<script>
+    let currentMonth = 10; // November (0-indexed for Date)
+    let currentYear = 2024;
+    let selectedDay = null;
+    let selectedTime = null; // Track selected time
+    const calendar = document.querySelector('.calendar');
+    const timeSlotContainer = document.querySelector('.time-slot');
+    const selectedDateDisplay = document.getElementById('selected-date'); // To show selected date
+    const bookButton = document.getElementById('book-appointment'); // Book Appointment button
+    
+    const calendarMonth = document.getElementById('calendar-month'); // To display the month and year
+
+    // Function to show or hide the "Book Appointment" button based on selections
+    function checkAppointmentReady() {
+        if (selectedDay !== null && selectedTime !== null) {
+            bookButton.style.display = 'block'; // Show button
+        } else {
+            bookButton.style.display = 'none'; // Hide button
+        }
+    }
+
+    function generateCalendar(month, year) {
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+
+        // Set the calendar month and year
+        calendarMonth.innerText = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
+        calendar.innerHTML = `
+            <div class="calendar-day">Sun</div>
+            <div class="calendar-day">Mon</div>
+            <div class="calendar-day">Tue</div>
+            <div class="calendar-day">Wed</div>
+            <div class="calendar-day">Thu</div>
+            <div class="calendar-day">Fri</div>
+            <div class="calendar-day">Sat</div>
+        `;
+
+        // Empty cells for the days before the first day of the month
+        for (let i = 0; i < firstDay; i++) {
+            calendar.innerHTML += `<div></div>`;
+        }
+
+        // Loop through the days of the month
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayOfWeek = (firstDay + i - 1) % 7; // Determine the day of the week (0-Sun, 1-Mon, ...)
+            const button = document.createElement('button');
+            button.innerText = i;
+
+            // Always apply this style for unavailable days
+            if (dayOfWeek === 0 || dayOfWeek === 2 || dayOfWeek === 4 || dayOfWeek === 5) {
+                button.disabled = true;
+                button.style.backgroundColor = '#FFFFFF'; // White for unavailable days
+                button.style.color = '#D3D3D3'; // Greyed out text for unavailable days
+                button.title = 'Unavailable. Try another day.';
+            }
+
+            // Highlight available days (Mon, Wed, Sat)
+            if (dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 6) {
+                button.style.backgroundColor = '#F0E1E1'; // Light color for available days
+                button.style.color = '#5C3D3D';
+                button.onclick = () => {
+                    // Remove the 'selected' class from all buttons
+                    
+
+                    // If a day was previously selected, reset its background color
+                    if (selectedDay !== null) {
+                        const previousSelectedButton = document.querySelector(`button:nth-child(${selectedDay - firstDay})`);
+                        if (previousSelectedButton) {
+                            previousSelectedButton.style.backgroundColor = '#F0E1E1'; // Reset previous selected day
+                        }
+                    }
+                    // Highlight the selected button with a darker shade
+                    button.style.backgroundColor = '#D8A8A8'; // Darker shade for selected day
+                    selectedDay = i;
+
+                    // Display the selected date above the time selection
+                    selectedDateDisplay.innerHTML = `Selected Date: ${currentMonth + 1}/${i}/${currentYear}`;
+
+                    // Check if both date and time are selected to display the button
+                    checkAppointmentReady();
+                };
+            }
+
+            calendar.appendChild(button);
+        }
+    }
+
+    // Event listener for time selection
+    const timeSelect = document.getElementById('time');
+    timeSelect.addEventListener('change', function() {
+        selectedTime = timeSelect.value;
+
+        // Display the selected time above the time selection
+        checkAppointmentReady();
+    });
+
+    // Function to go to the previous month
+    function prevMonth() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        generateCalendar(currentMonth, currentYear);
+    }
+
+    // Function to go to the next month
+    function nextMonth() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentMonth, currentYear);
+    }
+
+    // Initialize the calendar with the current month
+    generateCalendar(currentMonth, currentYear);
+
+</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>
