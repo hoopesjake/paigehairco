@@ -13,21 +13,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // // Connect to PostgreSQL database
-// const knex = require("knex")({
-//     client: "pg",
-//     connection: {
-//         host: "localhost",
-//         user: "postgres",
-//         password: "Indiglo51919",
-//         database: "paigehairco",
-//         port: 5432,
-//     },
-// });
+const knex = require("knex")({
+    client: "pg",
+    connection: {
+        host: "localhost",
+        user: "postgres",
+        password: "Indiglo51919",
+        database: "paigehairco",
+        port: 5432,
+    },
+});
 
-// // Test database connection
-// knex.raw('SELECT 1')
-//     .then(() => console.log('Database connected'))
-//     .catch(err => console.error('Database connection failed:', err));
+// Test database connection
+knex.raw('SELECT 1')
+    .then(() => console.log('Database connected'))
+    .catch(err => console.error('Database connection failed:', err));
 
 // Route to render the index.ejs view
 app.get("/", (req, res) => {

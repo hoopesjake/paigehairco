@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Paige Hair Co.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/square.ico">
+    <link rel="preload" href="https://cdn3.editmysite.com/app/website/css/site.4b84f4c981da85f11ad4.css" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #d4a5a5;
+            --secondary-color: #f0e1e1;
+            --text-color: #5c3d3d;
+            --highlight-color: #f7c7c7;
+        }
+
+        * {
+            font-family: 'Work Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .loading-view {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            background-color: var(--secondary-color);
+        }
+
+        .loading-container {
+            width: 62px;
+            height: 54px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+
+        .dot-container {
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            animation: loading-view-movement 1.5s infinite;
+        }
+
+        .dot-container:nth-of-type(2) {
+            animation-delay: 0.2s;
+        }
+
+        .dot-container:nth-of-type(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes loading-view-movement {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .header a {
+            margin: 0 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .header a:hover {
+            color: var(--highlight-color);
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background-color: var(--secondary-color);
+        }
+
+        .about-section img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .intro-text {
+            font-size: 1.3em;
+            color: var(--text-color);
+            line-height: 1.5em;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .instagram-section {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--secondary-color);
+        }
+
+        .instagram-section h2 {
+            color: var(--text-color);
+            margin: 10px 0;
+            font-size: 1.8em;
+        }
+
+        .instagram-section a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: var(--primary-color);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .instagram-section a.button:hover {
+            background-color: var(--highlight-color);
+        }
+
+        .work-description {
+            color: var(--text-color);
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        .location-hours-section {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .location-hours-section h3 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .location-hours-section p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+
+        .location-hours-section p span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-view">
+        <div class="loading-container">
+            <div class="dot-container"></div>
+            <div class="dot-container"></div>
+            <div class="dot-container"></div>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>Paige Hair Co.</h1>
+        <a href="#">Book</a>
+        <a href="#">Services</a>
+    </div>
+
+    <div class="about-section">
+        <img src="AboutMePic.jpg" alt="About Me Picture of Paige">
+        <p class="intro-text">
+            hi i'm paige! i am a hairstylist at @rae & i am obsessed with my job! i have been doing hair for about 3
+            years now and i can't wait for what the future holds🫶🏼 i would love to do your hair!
+        </p>
+    </div>
+
+    <div class="instagram-section">
+        <h2>Check out some of my work:</h2>
+        <a href="https://www.instagram.com/paige.hairco/" class="button">Visit Instagram</a>
+        <p class="work-description">Blondes, brondes, brunettes, lived in hair 🫶🏼</p>
+    </div>
+
+    <div class="location-hours-section">
+        <h3>Location & Hours</h3>
+        <p><span>Rae Hair Salon</span></p>
+        <p>4801 N. University Ave. #330 Suite 10<br>Provo, UT, 84604</p>
+        <p><span>Hours:</span><br>
+            Monday, Wednesday, Saturday: 10:00 am - 6:00 pm<br>
+            Closed: Tuesday, Thursday, Friday, and Sunday
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loadingView = document.querySelector('.loading-view');
+            loadingView.remove();
+        });
+    </script>
+</body>
+
+</html>
